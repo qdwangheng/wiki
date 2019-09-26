@@ -1,0 +1,31 @@
+一、目录结构
+[root@AM335x /]# ls
+bin      lib      media    proc     sbin     usr
+dev      lib32    mnt      root     sys      var
+etc      linuxrc  opt      run      tmp
+[root@AM335x /]# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00080000 00020000 "SPL"
+mtd1: 00200000 00020000 "U-Boot"
+mtd2: 00400000 00020000 "Kernel"
+mtd3: 00400000 00020000 "Kernel2"
+mtd4: 00100000 00020000 "Logo"
+mtd5: 0c000000 00020000 "File System"
+mtd6: 33400000 00020000 "Opt"
+
+Kernel2 linux 内核备份
+应用程序和数据存放到opt目录下。
+
+建议目录结构
+/opt/myapp/
+          |--bin
+          |--data
+          |--doc
+          |--etc
+          |--lib
+          |--share
+          
+         
+二、程序自起
+系统启动扫描 /etc/ini.d 目录下有以“S”开头文件，并启动，因此只需要在目录/etc/init.d目录下编写文件名为：“S+编号+名称“的可执行脚本。
+可编号越大越晚，建议在90-99之间 同时修改可执行权限。
