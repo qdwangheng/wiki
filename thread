@@ -1,0 +1,5 @@
+1、thread::get_id() 
+If the thread object is joinable, the function returns a value that uniquely identifies the thread.
+只有在可joinable 状态下才可以获取到唯一ID；
+If the thread object is not joinable, the function returns a default-constructed object of member type thread::id.
+ 如果不可joinable、例如detach状态下，其ID成为不可执行线程，因此需要用到： std::this_thread::get_id()获取当前状态的线程ID；
